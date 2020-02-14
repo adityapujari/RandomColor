@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Random color picker</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <style>
+      .btn {
+        box-sizing: border-box;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        position: absolute;
+        left: 550px;
+        top: 350px;
+        appearance: none;
+        background-color: transparent;
+        border: 2px solid #e74c3c;
+        border-radius: 0.6em;
+        color: #e74c3c;
+        cursor: pointer;
+        display: -webkit-box;
+        display: flex;
+        align-self: center;
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1;
+        margin: 20px;
+        padding: 1.2em 2.8em;
+        text-decoration: none;
+        text-align: center;
+        text-transform: uppercase;
+        font-family: "Montserrat", sans-serif;
+        font-weight: 700;
+      }
+      .btn:hover,
+      .btn:focus {
+        color: #000025;
+        outline: 0;
+      }
+      .third {
+        border-color: #3498db;
+        color: #fff;
+        box-shadow: 0 0 40px 40px #3498db inset, 0 0 0 0 #3498db;
+        -webkit-transition: all 150ms ease-in-out;
+        transition: all 150ms ease-in-out;
+      }
+      .third:hover {
+        box-shadow: 0 0 10px 0 #3498db inset, 0 0 10px 4px #3498db;
+      }
+      .box h3 {
+        text-align: center;
+        position: relative;
+        top: 80px;
+      }
+      .box {
+        width: 70%;
+        height: 300px;
+        background-color: #fff;
+        margin: 40px auto;
+      }
+      .effect1 {
+        -webkit-box-shadow: 0 10px 6px -6px #777;
+        -moz-box-shadow: 0 10px 6px -6px #777;
+        box-shadow: 0 10px 6px -6px #777;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="box effect1" id="background">
+      <div>
+        <h3>Click Random to change the color</h3>
+      </div>
+      <div class="h3" id="code">
+        <h3></h3>
+      </div>
+      <div class="h3" id="hexa">
+        <h3></h3>
+      </div>
+    </div>
+    <button class="btn third" id="button2">
+      <p>Random</p>
+    </button>
+    <script>
+      var x, y, z, color;
+      window.console.log("this is script");
+      document.getElementById("button2").onclick = function() {
+        x = Math.round(Math.random() * 256);
+        y = Math.round(Math.random() * 256);
+        z = Math.round(Math.random() * 256);
+        color = "rgb(" + x + "," + y + "," + z + ")";
+        document.getElementById("background").style.backgroundColor = color;
+        document.getElementById("code").innerHTML = "<h3>" + color + "</h3>";
+        var red = Number(x).toString(16);
+        if (red.length < 2) {
+          red = "0" + red;
+        }
+        var green = Number(y).toString(16);
+        if (green.length < 2) {
+          green = "0" + green;
+        }
+        var blue = Number(z).toString(16);
+        if (blue.length < 2) {
+          blue = "0" + blue;
+        }
+        var hexcolor;
+        hexcolor = red + green + blue;
+        document.getElementById("hexa").innerHTML =
+          "<h3>The Hex code is : #" + hexcolor + "</h3>";
+      };
+    </script>
+  </body>
+</html>
